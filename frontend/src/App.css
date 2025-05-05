@@ -1,0 +1,598 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Font Definition */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+:root {
+  --crayon-red: #FF6B6B;
+  --crayon-blue: #4ECDC4;
+  --crayon-green: #83D483;
+  --crayon-yellow: #FFE66D;
+  --crayon-purple: #A991F7;
+  --crayon-pink: #FF69B4;
+  --crayon-orange: #FF9E64;
+  --paper-bg: #FFFDF7;
+}
+
+body {
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  background-color: var(--paper-bg);
+  overflow: hidden;
+}
+
+/* Paper texture and grid background */
+.paper-bg {
+  background-color: var(--paper-bg);
+  background-image: 
+    linear-gradient(rgba(200, 200, 200, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 200, 200, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) inset;
+}
+
+/* Animation for new GIFs */
+@keyframes pop-in {
+  0% {
+    transform: scale(0.5) rotate(-5deg);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  85% {
+    transform: scale(0.95) rotate(-1deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Crayon-style handwritten text */
+.hand-drawn {
+  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff;
+  letter-spacing: 0.05em;
+  position: relative;
+  display: inline-block;
+}
+
+.hand-drawn:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: -3px;
+  left: 0;
+  background-color: var(--crayon-red);
+  border-radius: 2px;
+  transform: rotate(-0.5deg);
+}
+
+/* Crayon scribbles with enhanced appearance */
+.crayon-scribble-red::before,
+.crayon-scribble-blue::before,
+.crayon-scribble-green::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  bottom: -3px;
+  left: 0;
+  border-radius: 4px;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.crayon-scribble-red::before {
+  background-color: var(--crayon-red);
+  transform: rotate(-1deg);
+}
+
+.crayon-scribble-blue::before {
+  background-color: var(--crayon-blue);
+  transform: rotate(1deg);
+}
+
+.crayon-scribble-green::before {
+  background-color: var(--crayon-green);
+  transform: rotate(-0.5deg);
+}
+
+/* Crayon buttons with 3D effect */
+.crayon-button {
+  padding: 0.5rem 1.25rem;
+  border: 3px solid #000;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #000;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s;
+  transform-style: preserve-3d;
+  transform: perspective(500px);
+  box-shadow: 
+    0 6px 0 #000,
+    0 8px 10px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.4);
+}
+
+.crayon-button:hover {
+  transform: perspective(500px) translateY(-2px);
+  box-shadow: 
+    0 8px 0 #000,
+    0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.crayon-button:active {
+  transform: perspective(500px) translateY(3px);
+  box-shadow: 
+    0 3px 0 #000,
+    0 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bg-crayon-red {
+  background-color: var(--crayon-red);
+}
+
+.bg-crayon-blue {
+  background-color: var(--crayon-blue);
+}
+
+.bg-crayon-green {
+  background-color: var(--crayon-green);
+}
+
+.bg-crayon-yellow {
+  background-color: var(--crayon-yellow);
+}
+
+.bg-crayon-purple {
+  background-color: var(--crayon-purple);
+}
+
+.bg-crayon-pink {
+  background-color: var(--crayon-pink);
+}
+
+.text-crayon-red {
+  color: var(--crayon-red);
+}
+
+.text-crayon-blue {
+  color: var(--crayon-blue);
+}
+
+.text-crayon-green {
+  color: var(--crayon-green);
+}
+
+.text-crayon-purple {
+  color: var(--crayon-purple);
+}
+
+/* Wiggle animation for GIFs on hover */
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(3deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 1s ease-in-out;
+}
+
+.hover\:animate-wiggle:hover {
+  animation: wiggle 0.8s ease-in-out;
+}
+
+/* Crayon border effect */
+.crayon-border {
+  position: relative;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.crayon-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: none;
+  border: 3px dashed rgba(255,255,255,0.3);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+/* Shadow with crayon effect */
+.shadow-crayon {
+  box-shadow: 
+    3px 3px 0 rgba(0,0,0,0.8),
+    6px 6px 0 rgba(0,0,0,0.1);
+}
+
+/* Name tag styles with improved animation */
+.gif-name-tag {
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  transform-origin: center;
+  animation: bounce 1.5s ease-in-out infinite alternate;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  padding: 2px 8px;
+  z-index: 50;
+}
+
+/* Personality-based GIF frame styles with enhanced colors */
+.personality-friendly {
+  border-color: #4FC3F7;
+}
+
+.personality-energetic {
+  border-color: #FDD835;
+}
+
+.personality-curious {
+  border-color: #66BB6A;
+}
+
+.personality-silly {
+  border-color: #EC407A;
+}
+
+.personality-calm {
+  border-color: #90CAF9;
+}
+
+.personality-playful {
+  border-color: #4DD0E1;
+}
+
+.personality-dramatic {
+  border-color: #9575CD;
+}
+
+.personality-mischievous {
+  border-color: #FF8A65;
+}
+
+.personality-wise {
+  border-color: #78909C;
+}
+
+.personality-shy {
+  border-color: #F48FB1;
+}
+
+/* Speech bubble styles with improved appearance */
+.speech-bubble {
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  min-height: 2.5rem;
+  min-width: 120px;
+  transform-origin: bottom center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Make speech bubble visible when text exists */
+.speech-bubble:not(:empty) {
+  opacity: 1;
+  visibility: visible;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+  filter: drop-shadow(0 2px 0 rgba(0,0,0,0.2));
+}
+
+/* Improved personality-based speech bubble styles */
+.personality-friendly .speech-bubble {
+  background-color: #E6F7FF;
+  border-color: #4FC3F7;
+}
+
+.personality-friendly .speech-bubble::after {
+  border-top-color: #E6F7FF;
+}
+
+.personality-energetic .speech-bubble {
+  background-color: #FFF9C4;
+  border-color: #FDD835;
+}
+
+.personality-energetic .speech-bubble::after {
+  border-top-color: #FFF9C4;
+}
+
+.personality-curious .speech-bubble {
+  background-color: #E8F5E9;
+  border-color: #66BB6A;
+}
+
+.personality-curious .speech-bubble::after {
+  border-top-color: #E8F5E9;
+}
+
+.personality-silly .speech-bubble {
+  background-color: #F8BBD0;
+  border-color: #EC407A;
+}
+
+.personality-silly .speech-bubble::after {
+  border-top-color: #F8BBD0;
+}
+
+.personality-calm .speech-bubble {
+  background-color: #E3F2FD;
+  border-color: #90CAF9;
+}
+
+.personality-calm .speech-bubble::after {
+  border-top-color: #E3F2FD;
+}
+
+.personality-playful .speech-bubble {
+  background-color: #E0F7FA;
+  border-color: #4DD0E1;
+}
+
+.personality-playful .speech-bubble::after {
+  border-top-color: #E0F7FA;
+}
+
+.personality-dramatic .speech-bubble {
+  background-color: #EDE7F6;
+  border-color: #9575CD;
+}
+
+.personality-dramatic .speech-bubble::after {
+  border-top-color: #EDE7F6;
+}
+
+.personality-mischievous .speech-bubble {
+  background-color: #FFF3E0;
+  border-color: #FF8A65;
+}
+
+.personality-mischievous .speech-bubble::after {
+  border-top-color: #FFF3E0;
+}
+
+.personality-wise .speech-bubble {
+  background-color: #ECEFF1;
+  border-color: #78909C;
+}
+
+.personality-wise .speech-bubble::after {
+  border-top-color: #ECEFF1;
+}
+
+.personality-shy .speech-bubble {
+  background-color: #FCE4EC;
+  border-color: #F48FB1;
+}
+
+.personality-shy .speech-bubble::after {
+  border-top-color: #FCE4EC;
+}
+
+/* Font for speech bubbles */
+.font-crayon {
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  font-weight: bold;
+}
+
+/* Thinking animation with improved effect */
+.thinking {
+  animation: thinking 2s ease-in-out infinite;
+}
+
+/* Improved neighbor detection highlight */
+.has-neighbors {
+  position: relative;
+}
+
+.has-neighbors::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  border: 3px dotted rgba(255, 255, 255, 0.8);
+  border-radius: 18px;
+  animation: pulse 2s infinite;
+  pointer-events: none;
+  z-index: -1;
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+}
+
+/* Enhanced talking animations */
+.talking-animation {
+  animation: subtle-bounce 0.5s infinite alternate;
+}
+
+.talking-text {
+  display: inline-block;
+  min-height: 1.2em;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+}
+
+.typing-animation {
+  animation: blink 0.7s infinite;
+}
+
+/* Cartoon-style scene selector */
+.scene-selector {
+  position: relative;
+  display: inline-block;
+  transition: all 0.2s;
+}
+
+.scene-selector:hover {
+  transform: scale(1.1) rotate(3deg);
+}
+
+.scene-selector.active {
+  transform: scale(1.1);
+  animation: scene-pulse 2s infinite;
+}
+
+@keyframes scene-pulse {
+  0%, 100% { transform: scale(1.1); }
+  50% { transform: scale(1.15); }
+}
+
+/* Daily topic badge */
+.topic-badge {
+  position: relative;
+  overflow: hidden;
+}
+
+.topic-badge::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--crayon-red);
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+/* Chat message bubbles */
+.chat-bubble-user {
+  position: relative;
+  border-radius: 18px 18px 0 18px;
+  background: linear-gradient(135deg, #78e4ff, #4e54c8);
+  color: white;
+  animation: bubble-in-right 0.3s ease-out forwards;
+}
+
+.chat-bubble-gif {
+  position: relative;
+  border-radius: 18px 18px 18px 0;
+  background: white;
+  border: 2px solid #eee;
+  animation: bubble-in-left 0.3s ease-out forwards;
+}
+
+@keyframes bubble-in-right {
+  0% { transform: translateX(20px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes bubble-in-left {
+  0% { transform: translateX(-20px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Animation keyframes with enhanced effects */
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) translateX(-50%) scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-8px) translateX(-50%) scale(1.05);
+  }
+  70% { transform: translateY(5px) translateX(-50%) scale(0.95); }
+  100% { transform: translateY(0) translateX(-50%) scale(1); }
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0) translateX(-50%); }
+  100% { transform: translateY(-3px) translateX(-50%); }
+}
+
+@keyframes subtle-bounce {
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  100% { transform: translateY(-2px) scale(1.03) rotate(1deg); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(-50%) rotate(-1deg); }
+  50% { transform: translateY(-5px) translateX(-50%) rotate(1deg); }
+  100% { transform: translateY(0) translateX(-50%) rotate(-1deg); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.03); }
+  100% { opacity: 0.3; transform: scale(1); }
+}
+
+@keyframes thinking {
+  0% { transform: translateY(0) translateX(-50%) scale(1); }
+  33% { transform: translateY(-4px) translateX(-48%) scale(1.03); }
+  66% { transform: translateY(2px) translateX(-52%) scale(0.97); }
+  100% { transform: translateY(0) translateX(-50%) scale(1); }
+}
+
+/* Upload area */
+.upload-drop-area {
+  border: 3px dashed #90caf9;
+  border-radius: 12px;
+  background-color: rgba(144, 202, 249, 0.1);
+  transition: all 0.3s;
+}
+
+.upload-drop-area:hover {
+  background-color: rgba(144, 202, 249, 0.2);
+  border-color: #42a5f5;
+}
+
+/* Loading spinner with crayon style */
+.crayon-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0,0,0,0.1);
+  border-radius: 50%;
+  border-top: 4px solid var(--crayon-blue);
+  border-right: 4px solid var(--crayon-pink);
+  border-bottom: 4px solid var(--crayon-yellow);
+  border-left: 4px solid var(--crayon-green);
+  animation: crayon-spin 1s linear infinite;
+}
+
+@keyframes crayon-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Text shadow for better readability */
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Background scene transition */
+.scene-transition {
+  transition: background-image 0.5s ease-in-out;
+}
