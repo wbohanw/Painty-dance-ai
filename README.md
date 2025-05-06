@@ -2,7 +2,7 @@
 
 An interactive playground where your drawings come to life, interact with each other, and respond to you through AI-powered conversations.
 
-![Painty Dance AI Demo](https://www.youtube.com/watch?v=dVhpT-ZqagE)
+[![Painty Dance AI Demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=dVhpT-ZqagE)
 
 ## Features
 
