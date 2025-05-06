@@ -4,7 +4,13 @@ An interactive playground where your drawings come to life, interact with each o
 
 [![Painty Dance AI Demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=dVhpT-ZqagE)
 
+## Demo
+
+https://github.com/user-attachments/assets/3405e617-e42c-4e79-afb2-3cacc1e601b2
+
+
 ## Features
+
 
 - **Bring Your Drawings to Life**: Upload your drawings or images and watch them transform into animated characters
 - **Interactive Environments**: Place your animated drawings in various themed scenes like forest, beach, space, and more
